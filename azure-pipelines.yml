@@ -1,0 +1,22 @@
+# Starter pipeline
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: DockerInstaller@0
+  displayName: Installing Docker 17
+  inputs:
+    dockerVersion: '17.09.0-ce'
+    
+    
+- task: Docker@2
+  inputs:
+    containerRegistry: 'mgsuraj-dockerhub'
+    repository: 'mgsuraj/k8s-repository'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
