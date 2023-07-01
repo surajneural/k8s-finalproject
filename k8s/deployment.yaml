@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-finalproject
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: k8s-finalproject
+  template:
+    metadata:
+      labels:
+        app: k8s-finalproject
+    spec:
+      containers:
+      - name: k8s-finalproject
+        image: mgsuraj/k8s-finalproject
+        ports:
+        - containerPort: 8080
