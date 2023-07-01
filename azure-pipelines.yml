@@ -5,6 +5,8 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+steps:
+
 - task: DockerInstaller@0
   displayName: Installing Docker 17
   inputs:
