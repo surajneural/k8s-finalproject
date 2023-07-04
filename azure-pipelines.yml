@@ -19,3 +19,14 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
+
+- task: KubernetesManifest@1
+  displayName: Deploying on GKE K8s
+  inputs:
+    action: 'deploy'
+    connectionType: 'kubernetesServiceConnection'
+    kubernetesServiceConnection: 'svc-k8s-cluster'
+    namespace: 'default'
+    manifests: |
+      k8s/deployment.yaml
+      k8s/service.yaml
